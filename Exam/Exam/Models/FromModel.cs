@@ -1,17 +1,19 @@
-﻿namespace Exam.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Exam.Models;
 
 public record FormModel(
-    string FullName,
-    int PassportSeries,
-    int PassportNumber,
-    string PassportGiven,
-    DateOnly PassportGivenDate,
-    string PassportRegistration,
-    int Age,
+    [Required] string FullName,
+    [Required, Range(1000, 10000)]int PassportSeries,
+    [Required, Range(100000, 1000000)]int PassportNumber,
+    [Required] string PassportGiven,
+    [Required]DateOnly PassportGivenDate,
+    [Required] string PassportRegistration,
+    [Required] int Age,
     bool CriminalRecord,
-    decimal Sum,
-    Aim Aim,
-    Employment Employment,
+    [Required] decimal Sum,
+    [Required] Aim Aim,
+    [Required]Employment Employment,
     bool OtherCredits,
     Pledge Pledge,
     int CarAge );

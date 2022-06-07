@@ -21,10 +21,10 @@ public class ClientController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> GetClient([FromBody] FormModel _model)
+    public async Task<IActionResult> GetClient([FromForm] FormModel _model)
     {
         var clientStatus = await _criminalChecker.ClientIsCriminal(_model);
-        if (clientStatus)
+        if (!clientStatus)
         {
             return new JsonResult(new CreditResult(null, false, "Lie", null));
         }
